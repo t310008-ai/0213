@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人學習歷程檔案</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 導覽按鍵區塊 */
+        .nav-container {
+            margin: 2rem 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            padding: 12px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* 內容顯示區塊 */
+        .content-section {
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none; /* 預設隱藏 */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .item-card {
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin: 20px 0;
+            background: #f9f9f9;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>[你的姓名] 的學習歷程檔案</h1>
+    <p>追求卓越，持續成長的學習之路</p>
+</header>
+
+<div class="nav-container">
+    <button class="nav-btn active" onclick="showTab('intro')">個人簡介</button>
+    <button class="nav-btn" onclick="showTab('grade1')">高一：探索期</button>
+    <button class="nav-btn" onclick="showTab('grade2')">高二：深化期</button>
+    <button class="nav-btn" onclick="showTab('grade3')">高三：衝刺期</button>
+</div>
+
+<div id="intro" class="content-section active">
+    <h2>個人簡介</h2>
+    <p>這裡可以放你的自我介紹、特質分析以及報考動機。建議搭配一張專業乾淨的大頭照。</p>
+    <ul>
+        <li><strong>就讀學校：</strong> 某某高中</li>
+        <li><strong>興趣愛好：</strong> 程式開發、閱讀、排球</li>
+        <li><strong>核心技能：</strong> Python、英文演說、團隊協作</li>
+    </ul>
+</div>
+
+<div id="grade1" class="content-section">
+    <h2>高一學習成果</h2>
+    <div class="item-card">
+        <h3>自主學習：基礎網頁開發</h3>
+        <p>描述在高一期間如何從零開始學習 HTML/CSS，並完成了什麼小專案。</p>
+    </div>
+    <div class="item-card">
+        <h3>多元表現：服務性社團</h3>
+        <p>參與偏鄉服務，培養溝通能力與社會責任感。</p>
+    </div>
+</div>
+
+<div id="grade2" class="content-section">
+    <h2>高二學習成果</h2>
+    <div class="item-card">
+        <h3>課程學習成果：數學專題研究</h3>
+        <p>針對數列與級數進行探討，獲得校內成果展優等。</p>
+    </div>
+    <div class="item-card">
+        <h3>學科能力：英文檢定</h3>
+        <p>取得多益(TOEIC) 850分證照。</p>
+    </div>
+</div>
+
+<div id="grade3" class="content-section">
+    <h2>高三學習成果</h2>
+    <div class="item-card">
+        <h3>進階專題：AI 影像辨識應用</h3>
+        <p>利用 Python 開發一套簡易的口罩辨識系統，應對防疫需求。</p>
+    </div>
+    <div class="item-card">
+        <h3>學習省思</h3>
+        <p>總結高中三年的轉變，以及未來大學的學習計畫（讀書計畫）。</p>
+    </div>
+</div>
+
+<script>
+    function showTab(tabId) {
+        // 移除所有 section 的 active class
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        // 移除所有按鈕 的 active class
+        const buttons = document.querySelectorAll('.nav-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // 顯示指定的 section 並啟動按鈕
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
